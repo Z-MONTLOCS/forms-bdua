@@ -29,7 +29,7 @@ document.getElementById("sendData").addEventListener("click", () => {
     '<div class="alert alert-success">Enviando Informacion</div>';
 
   //socket = new WebSocket("ws://localhost:8765");
-  socket = new WebSocket("wws://a8c4-2800-e2-4b80-13e4-952a-53cb-d6e6-24a8.ngrok-free.app/");
+  socket = new WebSocket("wss://a8c4-2800-e2-4b80-13e4-952a-53cb-d6e6-24a8.ngrok-free.app/");
 
   //https://a8c4-2800-e2-4b80-13e4-952a-53cb-d6e6-24a8.ngrok-free.app/
  
