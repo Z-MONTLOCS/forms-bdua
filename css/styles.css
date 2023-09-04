@@ -1,0 +1,15 @@
+/* styles.css */
+
+#progressBar {
+  display: none;
+  background-color: lightgray;
+}
+
+#progressBar::-webkit-progress-value {
+  background-color: green;
+}
+
+#imageContainer {
+  max-width: 100%;
+  height: 150px;
+}

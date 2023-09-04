@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Informacion|BDUA</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="./css/styles.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    
+
+</head>
+
+<body>
+
+  <main class="container-fluid d-flex justify-content-center align-items-center vh-100">
+
+
+    <!-- ************************************************************
+************************************************************
+************************************************************ -->
+
+    <section class=" col-lg-6">
+
+      <div id="responseQuery" class="z-3 position-relative rounded-3 mb-4">Informacion Persona</div>
+
+      <div id="imageContainer" class="mb-2 z-3" style="display: none"></div>
+
+      <!-- ************************************************************
+************************************************************
+************************************************************ -->
+
+      <form id="apiFormQuery" class="border p-2 shadow-sm">
+
+
+        <!-- ************************************************************
+************************************************************
+************************************************************ -->
+
+        <div class="mt-3 w-100">
+          <progress class="w-100 mt-2 mb-2" id="progressBar" max="17" value="0"></progress>
+        </div>
+
+
+        <!-- ************************************************************
+************************************************************
+************************************************************ -->
+
+
+
+        <div class="form-group mt-3 mb-3">
+          <label for="document_type">Tipo de documento:</label>
+          <select class="form-control" id="document_type" name="document_type">
+            <option selected="selected" value="CC">
+              Cedula de Ciudadanía
+            </option>
+            <option value="PE">Per Especial Permanencia</option>
+            <option value="CE">Cedula de Extranjería</option>
+            <option value="PT">Permiso por Protección Temporal</option>
+            <option value="TI">Tarjeta de Identidad</option>
+            <option value="PA">Pasaporte</option>
+            <option value="RC">Registro Civil</option>
+            <option value="NU">No. Único de Id. Personal</option>
+            <option value="AS">Adulto sin identificación</option>
+            <option value="MS">Menor sin Identificación</option>
+            <option value="CD">Carnet diplomático</option>
+            <option value="CN">Certificado Nacido Vivo</option>
+            <option value="SC">Salvo Conducto</option>
+          </select>
+        </div>
+
+        <!-- ************************************************************
+************************************************************
+************************************************************ -->
+
+        <div class="form-group mb-3">
+          <label for="identification_number">Numero de identificacion:</label>
+          <input type="text" class="form-control" id="identification_number" name="identification_number"
+            placeholder="Numero de identificacion" />
+        </div>
+
+        <!-- ************************************************************
+************************************************************
+************************************************************ -->
+
+        <div class="mb-3 z-3">
+          <input id="imageCode" placeholder="Código de Imagen" class="form-control" style="display: none" />
+        </div>
+
+
+        <!-- ************************************************************
+************************************************************
+************************************************************ -->
+
+        <div class="d-flex justify-content-start mt-3">
+
+          <button type="button" class="btn btn-secondary mr-4" id="generateCode" disabled style="display: none">
+            Enviar Código
+          </button>
+
+
+          <button type="button" id="sendData" class="btn btn-secondary mr-2" disabled>
+            Enviar
+          </button>
+
+          <div id="timer" style="display: none"></div>
+
+        </div>
+      </form>
+    </section>
+
+
+    <!-- **********************************************+***
+*****************Modal Informataion person ***************
+ **********************************************************                              ********************** -->
+
+
+    <section class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <form id="apiForm">
+
+            <div class="modal-header">
+
+              <h5 class="modal-title" id="myModalLabel">
+                Información Persona
+              </h5>
+
+              <button type="button" class="close" data-dismiss="modal" id="closeH" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+
+            </div>
+
+            <div class="modal-body">
+
+              <div id="response" class="mt-3"></div>
+
+
+              <!-- +++++++++++++++++++++++++++++++++++++ -->
+
+              <div class="form-group">
+                <label for="documentType">Tipo de Documento:</label>
+                <input type="text" class="form-control" id="documentType" value="" />
+              </div>
+              <!-- +++++++++++++++++++++++++++++++++++++ -->
+
+              <div class="form-group">
+                <label for="identificationNumber">Número de Identificación:</label>
+                <input type="text" class="form-control" id="identificationNumber" value="" />
+              </div>
+              <!-- +++++++++++++++++++++++++++++++++++++ -->
+
+              <div class="form-group">
+                <label for="firstName">Primer Nombre:</label>
+                <input type="text" class="form-control" id="firstName" value="" />
+              </div>
+              <!-- +++++++++++++++++++++++++++++++++++++ -->
+
+              <div class="form-group">
+                <label for="middleName">Segundo Nombre:</label>
+                <input type="text" class="form-control" id="middleName" value="" />
+              </div>
+              <!-- +++++++++++++++++++++++++++++++++++++ -->
+
+              <div class="form-group">
+                <label for="lastName">Primer Apellido:</label>
+                <input type="text" class="form-control" id="lastName" value="" />
+              </div>
+              <!-- +++++++++++++++++++++++++++++++++++++ -->
+
+              <div class="form-group">
+                <label for="secondLastName">Segundo Apellido:</label>
+                <input type="text" class="form-control" id="secondLastName" value="" />
+              </div>
+              <!-- +++++++++++++++++++++++++++++++++++++ -->
+
+              <div class="form-group">
+                <label for="eps">EPS:</label>
+                <input type="text" class="form-control" id="eps" value="" />
+              </div>
+              <!-- +++++++++++++++++++++++++++++++++++++ -->
+
+            </div>
+
+            <!-- +++++++++++++++++++++++++++++++++++++ -->
+
+            <div class="modal-footer">
+
+              <button type="button" class="btn btn-secondary" id="close" data-dismiss="modal">
+                Cerrar
+              </button>
+
+              <button type="button" class="btn btn-primary" id="save">
+                Guardar
+              </button>
+
+            </div>
+            <!-- +++++++++++++++++++++++++++++++++++++ -->
+
+          </form>
+          <!-- +++++++++++++++++++++++++++++++++++++ -->
+        </div>
+      </div>
+      <!-- +++++++++++++++++++++++++++++++++++++ -->
+    </section>
+    <!-- +++++++++++++++++++++++++++++++++++++ -->
+
+  </main>
+
+
+
+  <script src="./js/utils.js"></script>
+  <script src="./js/index.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
