@@ -1,15 +1,29 @@
 /* styles.css */
 
 #progressBar {
-  display: none;
+  display: none; /* Inicialmente oculta la barra de progreso */
   background-color: lightgray;
+  
 }
 
+/* Cambia el color de la barra de progreso a verde */
 #progressBar::-webkit-progress-value {
   background-color: green;
 }
 
+
+/* Agrega estilos personalizados */
 #imageContainer {
   max-width: 100%;
+  height: 150px; /* Establece la altura deseada para la imagen */
+  overflow: hidden; /* Oculta el contenido que excede el tamaño del contenedor */
+}
+#imageContainer img {
+  width: 100%;
   height: 150px;
 }
+
+
+
+
+
